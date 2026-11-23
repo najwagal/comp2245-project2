@@ -112,3 +112,4 @@ function take_flash(): ?array
     unset($_SESSION['flash']);
     return $flash;
 }
+
