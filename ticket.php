@@ -9,7 +9,6 @@ if (!$ticket) {
 }
 $notes = fetch_notes($pdo, (int) $ticket['id']);
 $canDelete = user_can_delete($me, $ticket);
-$flash = take_flash();
 
 $pageTitle = '#' . $ticket['id'] . ' ' . $ticket['title'];
 $activeNav = 'tickets';
@@ -24,8 +23,6 @@ require __DIR__ . '/includes/header.php';
       <?php if ($canDelete): ?><button type="button" class="btn btn-danger" id="delete-btn">Delete</button><?php endif; ?>
     </div>
   </div>
-  <?php if ($flash): ?><p class="notice" role="status"><?= e($flash) ?></p><?php endif; ?>
-
   <?php if ($canDelete): ?>
   <div class="confirm" id="delete-confirm" hidden>
     <p><strong>Delete this ticket?</strong> Its notes will be deleted too. This can't be undone.</p>

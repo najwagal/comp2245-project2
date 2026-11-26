@@ -7,5 +7,6 @@ declare(strict_types=1);
             <span>Fix-It Desk &middot; COMP2245 Help Desk</span>
         </div>
     </footer>
+    <script src="app.js" defer></script>
 </body>
 </html>

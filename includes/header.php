@@ -13,6 +13,7 @@ $currentScript = basename($_SERVER['PHP_SELF'] ?? '');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="<?= e(csrf_token()) ?>">
     <title><?= e($pageTitle) ?> — Fix-It Desk</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -22,8 +23,8 @@ $currentScript = basename($_SERVER['PHP_SELF'] ?? '');
             <a class="brand" href="index.php">Fix-It Desk</a>
             <nav class="main-nav" aria-label="Primary navigation">
                 <?php if ($user !== null): ?>
-                    <a href="index.php" class="<?= $currentScript === 'index.php' ? 'active' : '' ?>">Tickets</a>
-                    <a href="new_ticket.php" class="<?= $currentScript === 'new_ticket.php' ? 'active' : '' ?>">New Ticket</a>
+                    <a href="index.php" class="<?= in_array($currentScript, ['index.php', 'ticket.php', 'ticket-edit.php'], true) ? 'active' : '' ?>">Tickets</a>
+                    <a href="ticket-new.php" class="<?= $currentScript === 'ticket-new.php' ? 'active' : '' ?>">New Ticket</a>
                     <?php if (is_admin()): ?>
                         <a href="users.php" class="<?= $currentScript === 'users.php' ? 'active' : '' ?>">Users</a>
                     <?php endif; ?>

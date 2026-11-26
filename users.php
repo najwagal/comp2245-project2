@@ -26,19 +26,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($firstname === '') {
         $errors[] = 'First name is required.';
-    } elseif (mb_strlen($firstname) > 50) {
+    } elseif (text_len($firstname) > 50) {
         $errors[] = 'First name must be 50 characters or fewer.';
     }
 
     if ($lastname === '') {
         $errors[] = 'Last name is required.';
-    } elseif (mb_strlen($lastname) > 50) {
+    } elseif (text_len($lastname) > 50) {
         $errors[] = 'Last name must be 50 characters or fewer.';
     }
 
     if ($email === '') {
         $errors[] = 'Email address is required.';
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL) || mb_strlen($email) > 255) {
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL) || text_len($email) > 255) {
         $errors[] = 'Please enter a valid email address.';
     }
 

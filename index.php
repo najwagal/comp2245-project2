@@ -1,9 +1,10 @@
 <?php
+declare(strict_types=1);
+
 require __DIR__ . '/includes/bootstrap.php';
 $me = require_login();
 
-$tickets = fetch_tickets($pdo, 'all', $me['id']);
-$flash = take_flash();
+$tickets = fetch_tickets($pdo, 'all', (int) $me['id']);
 $pageTitle = 'Tickets';
 $activeNav = 'tickets';
 require __DIR__ . '/includes/header.php';
@@ -12,7 +13,6 @@ require __DIR__ . '/includes/header.php';
   <h1>Tickets</h1>
   <a class="btn btn-primary" href="ticket-new.php">New ticket</a>
 </div>
-<?php if ($flash): ?><p class="notice" role="status"><?= e($flash) ?></p><?php endif; ?>
 
 <div class="filters" role="group" aria-label="Filter tickets">
   <button type="button" class="chip active" data-filter="all" aria-pressed="true">All</button>
@@ -41,4 +41,3 @@ require __DIR__ . '/includes/header.php';
   </tbody>
 </table>
 <?php require __DIR__ . '/includes/footer.php'; ?>
-
